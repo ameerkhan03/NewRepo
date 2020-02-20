@@ -1,0 +1,33 @@
+﻿
+@model TestBleems.Models.UserAdmin
+
+@{
+	ViewData["Title"] = "Login";
+
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
+{
+	<div class="m-5 d-flex justify-content-center">
+
+
+		<div class="jumbotron my-auto">
+			<h3 style="text-align:center">Login</h3>
+
+			@Html.TextBoxFor(x => x.userName, new { placeholder = "UserName", @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.userName, "", new { @class = "text-danger" })
+
+			<br />
+
+			@Html.PasswordFor(x => x.password, new { placeholder = "Password", @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+
+			<br />
+
+			<label>@ViewBag.errorMessage</label>
+			<input type="submit" value="Login" class="btn btn-primary" />
+
+		</div>
+	</div>
+}
